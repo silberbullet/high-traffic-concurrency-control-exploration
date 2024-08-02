@@ -1,6 +1,14 @@
 spring:
   application:
     name: transaction
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 
 server:
   port: 8002
+  servlet:
+    context-path: /api/v1

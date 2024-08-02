@@ -152,6 +152,8 @@
 
    상품 테이블은 간단하게 상품코드, 상품명, 상품 재고, 상품 가격으로 구성한다.
 
+   상품 주문 성공 시, 주문 성공 이력에 쌓아가는 방식으로 둔다.
+
    ```mermaid
    erDiagram
        SLITM_CD {
@@ -159,6 +161,14 @@
            VARCHAR SLITM_NM
            NUMBER SLITM_STK
            NUMBER SLITM_PRC
+       }
+
+       ORD_SLITM_HIS {
+           VARCHAR(Key) ORD_NUM
+           VARCHAR(Key) SLITM_CD
+           NUMBER SLITM_CNT
+           NUMBER SLITM_PRC
+           DATE ORD_SUC_DATE
        }
    ```
 

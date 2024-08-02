@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  db:
+    image: mysql
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "root1234"
+      MYSQL_DATABASE: "Transaction"
+    volumes:
+      - ./database/init:/docker-entrypoint-initdb.d
+      - ./database/datadir:/var/lib/mysql
+    ports:
+      - "3306:3306"

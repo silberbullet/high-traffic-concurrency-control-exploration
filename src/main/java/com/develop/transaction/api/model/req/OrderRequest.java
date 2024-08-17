@@ -1,5 +1,7 @@
 package com.develop.transaction.api.model.req;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data

@@ -1,5 +1,6 @@
 package com.develop.transaction.api.controller;
 
+import com.develop.transaction.config.controller.RestControllerEnvelopPattern;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +20,8 @@ import lombok.RequiredArgsConstructor;
  * @since 2024.07.
  */
 @RequiredArgsConstructor
-@RestController
-@RequestMapping("/api/ord")
+@RestControllerEnvelopPattern
+@RequestMapping("/api/v1/ord")
 public class OrderController {
 
     private final OrderService orderService;
@@ -39,7 +40,6 @@ public class OrderController {
      */
     @PostMapping("/order-slitm")
     public void OrderSlitm(OrderRequest orderRequest) {
-
     }
 
     /**

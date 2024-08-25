@@ -1,0 +1,1 @@
+INSERT INTO item(item_id, created_at, updated_at, item_name, item_prc, item_stk_qty) VALUES (1, sysdate(), sysdate(),'테스트상품', 3000, 50 );

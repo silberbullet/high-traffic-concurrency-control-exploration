@@ -1,10 +1,6 @@
 package com.develop.transaction.api.service;
 
 import org.springframework.stereotype.Service;
-
-import com.develop.transaction.api.model.req.OrderRequest;
-import com.develop.transaction.api.model.res.OrderResponse;
-
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -18,28 +14,28 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
-    @Override
-    public OrderResponse selectSlitm(OrderRequest orderRequest) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'selectSlitm'");
-    }
-
-    @Override
-    public void OrderSlitm(OrderRequest orderRequest) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'OrderSlitm'");
-    }
-
-    @Override
-    public void OrderSlitmLock(OrderRequest orderRequest) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'OrderSlitmLock'");
-    }
-
-    @Override
-    public void OrderSlitmVersion(OrderRequest orderRequest) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'OrderSlitmVersion'");
-    }
+//    @Override
+//    public OrderResponse selectSlitm(OrderRequest orderRequest) {
+//        // TODO Auto-generated method stub
+//        throw new UnsupportedOperationException("Unimplemented method 'selectSlitm'");
+//    }
+//
+//    @Override
+//    public void OrderSlitm(OrderRequest orderRequest) {
+//        // TODO Auto-generated method stub
+//        throw new UnsupportedOperationException("Unimplemented method 'OrderSlitm'");
+//    }
+//
+//    @Override
+//    public void OrderSlitmLock(OrderRequest orderRequest) {
+//        // TODO Auto-generated method stub
+//        throw new UnsupportedOperationException("Unimplemented method 'OrderSlitmLock'");
+//    }
+//
+//    @Override
+//    public void OrderSlitmVersion(OrderRequest orderRequest) {
+//        // TODO Auto-generated method stub
+//        throw new UnsupportedOperationException("Unimplemented method 'OrderSlitmVersion'");
+//    }
 
 }

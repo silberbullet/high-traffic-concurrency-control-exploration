@@ -1,7 +1,7 @@
-package com.develop.transaction.api.domain.order;
+package com.develop.transaction.domain.order;
 
-import com.develop.transaction.api.domain.BaseEntity;
-import com.develop.transaction.api.domain.product.Item;
+import com.develop.transaction.domain.BaseEntity;
+import com.develop.transaction.domain.product.Item;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,4 +25,12 @@ public class OrderItem extends BaseEntity {
 
     @Column(name="ord_prc", nullable = false)
     private Integer ordPrc;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
+
+}
+
+enum OrderStatus{
+    SUCCESS, FAIL
 }

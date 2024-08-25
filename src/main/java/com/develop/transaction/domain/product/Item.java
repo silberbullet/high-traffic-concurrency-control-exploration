@@ -1,6 +1,6 @@
-package com.develop.transaction.api.domain.product;
+package com.develop.transaction.domain.product;
 
-import com.develop.transaction.api.domain.BaseEntity;
+import com.develop.transaction.domain.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

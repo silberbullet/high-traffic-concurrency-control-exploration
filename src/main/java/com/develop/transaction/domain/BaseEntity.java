@@ -1,4 +1,4 @@
-package com.develop.transaction.api.domain;
+package com.develop.transaction.domain;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

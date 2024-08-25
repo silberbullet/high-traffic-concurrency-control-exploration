@@ -15,8 +15,9 @@ public class itemStkHis extends BaseEntity {
     @Column(name = "item_stk_id")
     private Long itemStkId;
 
-    @Column(name = "item_id", nullable = false)
-    private Long itemId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_id")
+    private Item item;
 
     @Column(name = "item_stk_qty")
     private Integer itemStkQty;

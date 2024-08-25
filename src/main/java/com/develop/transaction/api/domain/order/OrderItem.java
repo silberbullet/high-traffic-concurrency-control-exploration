@@ -1,6 +1,7 @@
 package com.develop.transaction.api.domain.order;
 
 import com.develop.transaction.api.domain.BaseEntity;
+import com.develop.transaction.api.domain.product.Item;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +16,9 @@ public class OrderItem extends BaseEntity {
     @Column(name = "ord_id")
     private long id;
 
-    @Column(name = "item_id")
-    private long itemId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_id")
+    private Item item;
 
     @Column(name="ord_cnt", nullable = false)
     private Integer ordCnt;

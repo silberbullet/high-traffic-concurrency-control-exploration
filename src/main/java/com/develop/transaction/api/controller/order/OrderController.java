@@ -1,10 +1,10 @@
-package com.develop.transaction.api.controller;
+package com.develop.transaction.api.controller.order;
 
+import com.develop.transaction.api.controller.order.dto.OrderRequest;
+import com.develop.transaction.api.service.order.OrderService;
 import com.develop.transaction.config.controller.RestControllerEnvelopPattern;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import com.develop.transaction.api.service.OrderService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,21 +22,13 @@ public class OrderController {
 
     private final OrderService orderService;
 
-//    /**
-//     * 상품 조회
-//     */
-//    @GetMapping("/select-slitm")
-//    public OrderResponse selectSlitm(OrderRequest orderRequest) {
-//
-//        return orderService.selectSlitm(orderRequest);
-//    }
-//
-//    /**
-//     * 일반 상품 주문
-//     */
-//    @PostMapping("/order-slitm")
-//    public void OrderSlitm(OrderRequest orderRequest) {
-//    }
+    /**
+     * 일반 상품 주문
+     */
+    @PostMapping("/order-slitm")
+    public void OrderSlitm(OrderRequest orderRequest) {
+
+    }
 //
 //    /**
 //     * Serializable + 배타 락 상품 주문

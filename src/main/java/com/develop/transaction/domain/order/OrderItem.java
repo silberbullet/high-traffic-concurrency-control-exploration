@@ -3,8 +3,10 @@ package com.develop.transaction.domain.order;
 import com.develop.transaction.domain.BaseEntity;
 import com.develop.transaction.domain.product.Item;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "order_item")
@@ -29,8 +31,9 @@ public class OrderItem extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
+    @Builder
+    public OrderItem(long id, Item item, Integer ordCnt, Integer ordPrc, OrderStatus orderStatus) {}
+
 }
 
-enum OrderStatus{
-    SUCCESS, FAIL
-}
+

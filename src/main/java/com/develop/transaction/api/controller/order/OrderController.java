@@ -25,9 +25,9 @@ public class OrderController {
     /**
      * 일반 상품 주문
      */
-    @PostMapping("/order-slitm")
-    public void OrderSlitm(OrderRequest orderRequest) {
-
+    @PostMapping("/order-item")
+    public void orderItem(OrderRequest orderRequest) {
+         orderService.orderItem(orderRequest.toVo());
     }
 //
 //    /**

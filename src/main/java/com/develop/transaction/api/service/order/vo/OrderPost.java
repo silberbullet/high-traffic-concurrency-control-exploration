@@ -1,7 +1,7 @@
 package com.develop.transaction.api.service.order.vo;
 
+import com.develop.transaction.domain.order.OrderResult;
 import com.develop.transaction.domain.order.OrderItem;
-import com.develop.transaction.domain.order.OrderStatus;
 import com.develop.transaction.domain.product.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,11 +18,12 @@ public class OrderPost {
         return new OrderPost(ItemId, ordCnt, ordPrc);
     }
 
-    public OrderItem create(Item item, OrderStatus status) {
+    public OrderItem create(Item item, OrderResult status) {
         return OrderItem.builder()
                 .item(item)
                 .ordCnt(ordCnt)
-                .orderStatus(status)
-                .ordPrc(ordPrc).build();
+                .ordPrc(ordPrc)
+                .orderResult(status)
+                .build();
     }
 }

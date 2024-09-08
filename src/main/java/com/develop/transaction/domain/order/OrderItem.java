@@ -3,14 +3,15 @@ package com.develop.transaction.domain.order;
 import com.develop.transaction.domain.BaseEntity;
 import com.develop.transaction.domain.product.Item;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "order_item")
-@NoArgsConstructor
+// 기본 생성자의 접근 제어를 PROTECTED로 설정을 통해 값이 없는 의미 없는 객체 생성 방지
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class OrderItem extends BaseEntity {
 
@@ -29,11 +30,15 @@ public class OrderItem extends BaseEntity {
     private Integer ordPrc;
 
     @Enumerated(EnumType.STRING)
-    private OrderStatus orderStatus;
+    private OrderResult orderResult;
 
     @Builder
-    public OrderItem(long id, Item item, Integer ordCnt, Integer ordPrc, OrderStatus orderStatus) {}
-
+    public OrderItem(Item item, Integer ordCnt, Integer ordPrc, OrderResult orderResult) {
+        this.item = item;
+        this.ordCnt = ordCnt;
+        this.ordPrc = ordPrc;
+        this.orderResult = orderResult;
+    }
 }
 
 

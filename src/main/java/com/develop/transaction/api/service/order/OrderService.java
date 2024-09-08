@@ -3,7 +3,7 @@ package com.develop.transaction.api.service.order;
 import com.develop.transaction.api.repository.order.OrderJpaRepository;
 import com.develop.transaction.api.repository.product.ItemJpaRepository;
 import com.develop.transaction.api.service.order.vo.OrderPost;
-import com.develop.transaction.domain.order.OrderStatus;
+import com.develop.transaction.domain.order.OrderResult;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +29,7 @@ public class OrderService {
         // 재고 확인
         if(orderItem.getItemStkQty() < orderPost.getOrdCnt()){
             // 주문 실패
-            orderJpaRepository.save(orderPost.create(orderItem, OrderStatus.FAIL));
+            orderJpaRepository.save(orderPost.create(orderItem, OrderResult.FAILED));
             throw new RuntimeException("Out of item stock");
         }
 
@@ -37,6 +37,6 @@ public class OrderService {
         orderItem.setItemStkQty(orderItem.getItemStkQty() - orderPost.getOrdCnt());
 
         // 주문 성공
-        orderJpaRepository.save(orderPost.create(orderItem,OrderStatus.SUCCESS));
+        orderJpaRepository.save(orderPost.create(orderItem, OrderResult.SUCCEEDED));
     }
 }

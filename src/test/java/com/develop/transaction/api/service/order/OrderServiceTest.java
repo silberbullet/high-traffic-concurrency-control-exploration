@@ -49,7 +49,7 @@ class OrderServiceUnitTest {
     }
 
     @Test
-    @DisplayName("일반 상품 주문")
+    @DisplayName("일반 상품 정상 주문")
     void orderItemSuccessCase() {
         // given
         // 주문 정보: Item ID가 1이고 주문 수량이 5, 결제 금액은 30000
@@ -63,6 +63,41 @@ class OrderServiceUnitTest {
 
         // 수량 10개에서 주문 처리 완료시 5개 반환
         assertEquals(5,item.getItemStkQty());
+        verify(orderJpaRepository, times(1)).save(any(OrderItem.class));
+    }
+
+    @Test
+    @DisplayName("일반 상품 재고 초과 주문")
+    void orderItemStkQtyFailCase() throws Exception{
+        // given
+        // 주문 정보 : Item ID가 1이고 주문 수량이 15개 결제 금액 75000
+        OrderPost orderPost =  OrderPost.of(1l,15,30000);
+
+        // 상품 조회
+        when(itemJpaRepository.findById(1l)).thenReturn(Optional.of(item));
+
+        // 주문 처리
+        Exception exception = assertThrows(RuntimeException.class, ()->orderService.orderItem(orderPost));
+
+
+        // 초과로 인한 에러 처리
+        assertEquals("Out of item stock",exception.getMessage());
+        verify(orderJpaRepository, times(1)).save(any(OrderItem.class));
+    }
+
+    @Test
+    @DisplayName("일반 상품 금액 미달 주문")
+    void orderItemPrcFailCase() throws Exception{
+        // given
+        // 주문 정보 : Item ID가 1이고 주문 수량이 15개 결제 금액 20000
+        OrderPost orderPost =  OrderPost.of(1l,5,20000);
+
+        when(itemJpaRepository.findById(1l)).thenReturn(Optional.of(item));
+
+        // 주문 처리
+        Exception exception = assertThrows(RuntimeException.class, ()->orderService.orderItem(orderPost));
+        // 금액 미달로 인한 에러 처리
+        assertEquals("Out of order prc",exception.getMessage());
         verify(orderJpaRepository, times(1)).save(any(OrderItem.class));
     }
 }

@@ -33,8 +33,14 @@ public class OrderService {
             throw new RuntimeException("Out of item stock");
         }
 
+        // 결제 금액 확인
+        if(orderItem.getItemPrc() * orderPost.getOrdCnt() > orderPost.getOrdPrc() ){
+            orderJpaRepository.save(orderPost.create(orderItem, OrderResult.FAILED));
+            throw new RuntimeException("Out of order prc");
+        }
+
         // 주문 처리
-        orderItem.setItemStkQty(orderItem.getItemStkQty() - orderPost.getOrdCnt());
+        orderItem.updateItemStkQty(orderItem.getItemStkQty() - orderPost.getOrdCnt());
 
         // 주문 성공
         orderJpaRepository.save(orderPost.create(orderItem, OrderResult.SUCCEEDED));

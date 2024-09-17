@@ -52,8 +52,6 @@ dependencies {
 }
 
 tasks.named('test') {
-	dependsOn dockerComposeUp
-	finalizedBy dockerComposeDown
 	useJUnitPlatform()
 }
 
